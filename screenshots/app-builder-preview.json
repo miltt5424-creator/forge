@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Forge",
+      "hasCanvas": false,
+      "bodyTextLen": 242,
+      "bodyTextHash": "a059fad53225a79262168e23dd6998610dff647ebcf671863a5fa5ea41ae07af",
+      "bodyTextPrefix": "FORGE TU NE COCHES PAS DES TÂCHES. Tu forges un caractère. Jour ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Forge",
+      "hasCanvas": false,
+      "bodyTextLen": 242,
+      "bodyTextHash": "a059fad53225a79262168e23dd6998610dff647ebcf671863a5fa5ea41ae07af",
+      "bodyTextPrefix": "FORGE TU NE COCHES PAS DES TÂCHES. Tu forges un caractère. Jour ",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

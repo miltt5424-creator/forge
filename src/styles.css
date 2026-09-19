@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: #0a0a0a;
+  --color-foreground: #edebe6;
+  --color-card: #141413;
+  --color-card-2: #1c1c1a;
+  --color-muted: #8c8983;
+  --color-faint: #5c5a55;
+  --color-accent: #d4d0c8;
+  --color-accent-foreground: #0a0a0a;
+  --color-border: #2a2925;
+  --color-ring: #d4d0c8;
+  --color-heat-0: #121211;
+  --color-heat-1: #2c2b27;
+  --color-heat-2: #4a4944;
+  --color-heat-3: #7a776f;
+  --color-heat-4: #c8c4ba;
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  --shadow-border: 0 0 0 1px rgba(237, 235, 230, 0.08);
+  --shadow-border-hover: 0 0 0 1px rgba(237, 235, 230, 0.16);
+}
+
+@layer base {
+  html {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes forge-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.forge-in {
+  animation: forge-in 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.forge-in-2 {
+  animation: forge-in 400ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both;
+}
+
+.forge-in-3 {
+  animation: forge-in 400ms cubic-bezier(0.22, 1, 0.36, 1) 160ms both;
+}
+
+.forge-in-4 {
+  animation: forge-in 400ms cubic-bezier(0.22, 1, 0.36, 1) 240ms both;
+}
