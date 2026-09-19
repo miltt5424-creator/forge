@@ -4,6 +4,7 @@ import { BookOpen, CalendarRange, Hammer, Quote, Sunrise } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useForgeStore } from "@/lib/store";
 import { Onboarding } from "@/components/onboarding";
+import { SyncLink } from "@/components/sync-provider";
 
 const NAV = [
   { to: "/", label: "Jour", icon: Sunrise },
@@ -22,6 +23,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   }, []);
 
   if (!onboardingComplete) {
+    // La page Compte reste accessible pour se connecter depuis un nouvel appareil
+    if (pathname === "/compte") {
+      return <div className="min-h-dvh bg-background px-4 py-10 sm:px-8">{children}</div>;
+    }
     return <Onboarding />;
   }
 
@@ -51,6 +56,9 @@ export function AppShell({ children }: { children: ReactNode }) {
             );
           })}
         </nav>
+        <div className="px-3 pb-3">
+          <SyncLink />
+        </div>
         <p className="px-6 pb-6 text-[0.6875rem] uppercase tracking-[0.18em] text-faint">
           Exigence. Pas de score.
         </p>
@@ -60,7 +68,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         <Link to="/" className="font-display text-lg uppercase tracking-[0.38em]">
           Forge
         </Link>
-        <span className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">Standard</span>
+        <div className="flex items-center gap-2">
+          <SyncLink compact />
+          <span className="text-[0.6875rem] uppercase tracking-[0.16em] text-muted">Standard</span>
+        </div>
       </header>
 
       <main className="px-4 pb-28 pt-6 sm:px-8 lg:ml-52 lg:px-12 lg:pb-16 lg:pt-10">{children}</main>

@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CATEGORIES, CATEGORY_LABEL, type HabitCategory } from "@/lib/types";
 import { useForgeStore } from "@/lib/store";
+import { syncConfigured } from "@/lib/supabase";
 
 export function Onboarding() {
   const completeOnboarding = useForgeStore((s) => s.completeOnboarding);
@@ -39,6 +41,11 @@ export function Onboarding() {
               <Button size="lg" variant="ghost" onClick={loadExample}>
                 Voir un Standard d'exemple
               </Button>
+              {syncConfigured && (
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/compte">J'ai déjà un compte</Link>
+                </Button>
+              )}
             </div>
           </div>
         )}

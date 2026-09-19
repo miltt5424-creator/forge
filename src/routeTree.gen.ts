@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CompteRouteImport } from './routes/compte'
 import { Route as ConstancyRouteImport } from './routes/constancy'
 import { Route as HabitsRouteImport } from './routes/habits'
 import { Route as IdentityRouteImport } from './routes/identity'
@@ -18,6 +19,11 @@ import { Route as ReviewRouteImport } from './routes/review'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompteRoute = CompteRouteImport.update({
+  id: '/compte',
+  path: '/compte',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConstancyRoute = ConstancyRouteImport.update({
@@ -43,6 +49,7 @@ const ReviewRoute = ReviewRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/compte': typeof CompteRoute
   '/constancy': typeof ConstancyRoute
   '/habits': typeof HabitsRoute
   '/identity': typeof IdentityRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/compte': typeof CompteRoute
   '/constancy': typeof ConstancyRoute
   '/habits': typeof HabitsRoute
   '/identity': typeof IdentityRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/compte': typeof CompteRoute
   '/constancy': typeof ConstancyRoute
   '/habits': typeof HabitsRoute
   '/identity': typeof IdentityRoute
@@ -65,14 +74,23 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/constancy' | '/habits' | '/identity' | '/review'
+  fullPaths:
+    '/' | '/compte' | '/constancy' | '/habits' | '/identity' | '/review'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/constancy' | '/habits' | '/identity' | '/review'
-  id: '__root__' | '/' | '/constancy' | '/habits' | '/identity' | '/review'
+  to: '/' | '/compte' | '/constancy' | '/habits' | '/identity' | '/review'
+  id:
+    | '__root__'
+    | '/'
+    | '/compte'
+    | '/constancy'
+    | '/habits'
+    | '/identity'
+    | '/review'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CompteRoute: typeof CompteRoute
   ConstancyRoute: typeof ConstancyRoute
   HabitsRoute: typeof HabitsRoute
   IdentityRoute: typeof IdentityRoute
@@ -86,6 +104,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compte': {
+      id: '/compte'
+      path: '/compte'
+      fullPath: '/compte'
+      preLoaderRoute: typeof CompteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/constancy': {
@@ -121,6 +146,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CompteRoute: CompteRoute,
   ConstancyRoute: ConstancyRoute,
   HabitsRoute: HabitsRoute,
   IdentityRoute: IdentityRoute,

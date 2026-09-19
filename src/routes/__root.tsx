@@ -1,5 +1,6 @@
 import { createRootRoute, HeadContent, Outlet, Scripts } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
+import { SyncProvider } from "@/components/sync-provider";
 import { PwaRegister } from "@/components/pwa-register";
 import appCss from "../styles.css?url";
 
@@ -37,6 +38,7 @@ export const Route = createRootRoute({
       </head>
       <body className="bg-background text-foreground">
         <PwaRegister />
+        <SyncProvider />
         <AppShell>
           <Outlet />
         </AppShell>
